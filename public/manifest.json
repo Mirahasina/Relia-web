@@ -1,9 +1,10 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Relia",
+  "name": "Site web Relia",
+  "description": "Relia est une plateforme de mise en relation entre entreprises et experts en technologie.",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "/home/mirahasina/Relia/relia-landing/src/assets/Relia-logo.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
