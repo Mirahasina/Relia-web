@@ -81,7 +81,7 @@ Objectif: ${form.objectif}
             <nav className="hidden md:flex space-x-10">
             <a href="#" className="text-gray-600 hover:text-gray-900 text-lg">Accueil</a>
             <a href="#solution" className="text-gray-600 hover:text-gray-900 text-lg">Solutions</a>
-            <a href="#process" className="text-gray-600 hover:text-gray-900 text-lg">Processus</a>
+            <a href="#process" className="text-gray-600 hover:text-gray-900 text-lg">Processus where</a>
             <a href="#équipe" className="text-gray-600 hover:text-gray-900 text-lg">Équipe</a>
             </nav>
                   <a href="#contact" className="hidden md:inline-block bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 text-lg font-semibold">
@@ -92,7 +92,7 @@ Objectif: ${form.objectif}
               <div className="md:hidden bg-white shadow rounded-lg py-4 px-6">
                 <a href="#" className="block py-2 text-gray-600 hover:text-gray-900 text-lg">Accueil</a>
                 <a href="#solution" className="block py-2 text-gray-600 hover:text-gray-900 text-lg">Solutions</a>
-                <a href="#process" className="block py-2 text-gray-600 hover:text-gray-900 text-lg">Processus nous</a>
+                <a href="#process" className="block py-2 text-gray-600 hover:text-gray-900 text-lg">Processus</a>
                 <a href="#équipe" className="block py-2 text-gray-600 hover:text-gray-900 text-lg">Équipe</a>
                 <a href="#contact" style={{ backgroundColor: '#A7001E' }} className="block py-2 text-white rounded-lg text-lg font-semibold mt-2 text-center">Contactez-nous</a>
               </div>
