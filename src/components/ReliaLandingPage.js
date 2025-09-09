@@ -94,7 +94,7 @@ Objectif: ${form.objectif}
                 <a href="#solution" className="block py-2 text-gray-600 hover:text-gray-900 text-lg">Solutions</a>
                 <a href="#process" className="block py-2 text-gray-600 hover:text-gray-900 text-lg">Processus</a>
                 <a href="#équipe" className="block py-2 text-gray-600 hover:text-gray-900 text-lg">Équipe</a>
-                <a href="#contact" className="block py-2 bg-red-500 text-white rounded-lg text-lg font-semibold mt-2 text-center">Contactez-nous</a>
+                <a href="#contact" style={{ backgroundColor: '#A7001E' }} className="block py-2 text-white rounded-lg text-lg font-semibold mt-2 text-center">Contactez-nous</a>
               </div>
             )}
           </div>
@@ -111,7 +111,7 @@ Objectif: ${form.objectif}
               <p className="text-lg text-gray-600 mb-8">
                 Solutions digitales & IA sur mesure pour optimiser vos opérations et renforcer votre avantage concurrentiel.
               </p>
-              <button className="bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 inline-flex items-center">
+              <button style={{ backgroundColor: '#A7001E' }} className="text-white px-6 py-3 rounded-lg hover:bg-red-600 inline-flex items-center">
                 <Search className="w-5 h-5 mr-2" />
                 Diagnostic stratégique offert
               </button>
