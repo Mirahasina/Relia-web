@@ -664,19 +664,20 @@ Objectif: ${form.objectif}
               </div>
             </div>
             <div className="grid md:grid-cols-4 gap-10 border-t border-gray-200 pt-10">
-            <div>
-                <div className="flex items-center mb-4">
-                    <img
+            <div className="flex flex-col items-center text-center mb-6">
+                <div className="mb-4">
+                  <img
                     src={require('../assets/Relia-logo.png')}
                     alt="RELIA Logo"
                     className="w-auto"
                     style={{ height: '60px' }}
-                    />                
+                  />
                 </div>
-                <p className="text-gray-500 mb-4 leading-relaxed">
-                Solutions digitales pour accélérer votre croissance.
+                <p className="text-gray-500 leading-relaxed">
+                  Solutions digitales pour accélérer votre croissance.
                 </p>
-            </div>
+              </div>
+
             <div>
                 <h4 className="font-semibold text-gray-900 mb-4">Solutions</h4>
                 <ul className="space-y-2 text-gray-600">
