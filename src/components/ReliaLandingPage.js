@@ -1,10 +1,28 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef,  useEffect } from 'react';
 import {  Users, Cog, Target, CheckCircle, Phone, Mail, MapPin, Search } from 'lucide-react';
 
 const ReliaLandingPage = () => {
   const spinRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   
   const processSteps = [
@@ -38,7 +56,6 @@ const [errors, setErrors] = useState({});
     return newErrors;
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const newErrors = validate();
@@ -58,9 +75,9 @@ Objectif: ${form.objectif}
 
   return (
     <div className="min-h-screen bg-white w-[100%]">
-      <header className="bg-white shadow-sm">
+      <header className="fixed top-0 left-0 w-full z-50 bg-white transition-colors duration-300 ease-in-out">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-8">
+          <div className="flex justify-between items-center py-6">
             <div className="flex items-center">
               <img
                 src={require('../assets/Relia-logo.png')}
@@ -79,26 +96,45 @@ Objectif: ${form.objectif}
               </button>
             </div>
             <nav className="hidden md:flex space-x-10">
-            <a href="#" className="text-gray-600 hover:text-gray-900 text-lg">Accueil</a>
-            <a href="#solution" className="text-gray-600 hover:text-gray-900 text-lg">Solutions</a>
-            <a href="#process" className="text-gray-600 hover:text-gray-900 text-lg">Processus</a>
-            <a href="#équipe" className="text-gray-600 hover:text-gray-900 text-lg">Équipe</a>
+              <a href="#" className="text-gray-600 hover:text-gray-900 text-lg">Accueil</a>
+              <a href="#solution" className="text-gray-600 hover:text-gray-900 text-lg">Solutions</a>
+              <a href="#process" className="text-gray-600 hover:text-gray-900 text-lg">Processus</a>
+              <a href="#équipe" className="text-gray-600 hover:text-gray-900 text-lg">Équipe</a>
             </nav>
-                  <a href="#contact" className="hidden md:inline-block bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 text-lg font-semibold">
-                Contactez-nous
-              </a>
-            </div>
-            {isMenuOpen && (
-              <div className="md:hidden bg-white shadow rounded-lg py-4 px-6">
-                <a href="#" className="block py-2 text-gray-600 hover:text-gray-900 text-lg">Accueil</a>
-                <a href="#solution" className="block py-2 text-gray-600 hover:text-gray-900 text-lg">Solutions</a>
-                <a href="#process" className="block py-2 text-gray-600 hover:text-gray-900 text-lg">Processus</a>
-                <a href="#équipe" className="block py-2 text-gray-600 hover:text-gray-900 text-lg">Équipe</a>
-                <a href="#contact" style={{ backgroundColor: '#A7001E' }} className="block py-2 text-white rounded-lg text-lg font-semibold mt-2 text-center">Contactez-nous</a>
-              </div>
-            )}
+            <a href="#contact" className="hidden md:inline-block bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 text-lg font-semibold">
+              Contactez-nous
+            </a>
           </div>
-        </header>
+          {isMenuOpen && (
+            <div className="md:hidden bg-white shadow rounded-lg py-4 px-6 mt-2">
+              <a href="#" className="block py-2 text-gray-600 hover:text-gray-900 text-lg">Accueil</a>
+              <a href="#solution" className="block py-2 text-gray-600 hover:text-gray-900 text-lg">Solutions</a>
+              <a href="#process" className="block py-2 text-gray-600 hover:text-gray-900 text-lg">Processus</a>
+              <a href="#équipe" className="block py-2 text-gray-600 hover:text-gray-900 text-lg">Équipe</a>
+              <a href="#contact" style={{ backgroundColor: '#A7001E' }} className="block py-2 text-white rounded-lg text-lg font-semibold mt-2 text-center">Contactez-nous</a>
+            </div>
+          )}
+        </div>
+      </header>
+
+      {showScrollTop && (
+      <button
+        onClick={scrollToTop}
+        className="fixed bottom-6 right-6 bg-red-600 text-white p-3 rounded-full shadow-lg hover:bg-red-700 transition-all duration-300 z-50"
+        aria-label="Retour en haut"
+      >
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+      </button>
+      )}
 
       <section className="bg-gradient-to-br from-gray-100 to-gray-200 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
