@@ -106,7 +106,7 @@ Objectif: ${form.objectif}
             <div>
               <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                 Libérez le plein potentiel{" "}
-                <span style={{ backgroundColor: '#A7001E' }} className="text-red-500">de votre entreprise</span>
+                <span style={{ color: '#A7001E' }} >de votre entreprise</span>
               </h1>
               <p className="text-lg text-gray-600 mb-8">
                 Solutions digitales & IA sur mesure pour optimiser vos opérations et renforcer votre avantage concurrentiel.
