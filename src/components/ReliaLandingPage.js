@@ -147,10 +147,10 @@ Objectif: ${form.objectif}
               <p className="text-lg text-gray-600 mb-8">
                 Solutions digitales & IA sur mesure pour optimiser vos opérations et renforcer votre avantage concurrentiel.
               </p>
-              <button style={{ backgroundColor: '#A7001E' }} className="text-white px-6 py-3 rounded-lg hover:bg-red-600 inline-flex items-center">
+              <a href='https://calendly.com/claudia-randriamanantena-relia-consulting/30min' style={{ backgroundColor: '#A7001E' }} className="text-white px-6 py-3 rounded-lg hover:bg-red-600 inline-flex items-center">
                 <Search className="w-5 h-5 mr-2" />
                 Diagnostic stratégique offert
-              </button>
+              </a>
             </div>
             <div className="relative">
              <div className="relative flex items-center justify-center h-full">
@@ -287,15 +287,15 @@ Objectif: ${form.objectif}
           </div>
 
           <div className="text-center mb-16">
-            <button className="text-white px-6 py-3 rounded-lg hover:bg-red-600 inline-flex items-center bg-gradient-to-b from-red-500 to-gray-700 text-white">
+            <a href='https://calendly.com/claudia-randriamanantena-relia-consulting/30min' className="text-white px-6 py-3 rounded-lg hover:bg-red-600 inline-flex items-center bg-gradient-to-b from-red-500 to-gray-700 text-white">
               <Target className="w-5 h-5 mr-2 " />
               Recevez votre plan d'action offert
-            </button>
+            </a>
           </div>
         </div>
       </section>
 
-<section id="équipe" className="py-16 bg-gray-50">
+<section className="py-16 bg-gray-50">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-12">
       <div className="relative w-full max-w-[750px] aspect-square mx-auto mb-12">
@@ -396,33 +396,53 @@ Objectif: ${form.objectif}
   </div>
 </section>
 
-      <section className="py-16">
+      <section className="bg-gradient-to-br from-gray-100 to-gray-200 py-20" id='équipe'>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Des solutions conçues pour{" "}
-              <span className="text-red-500">booster votre entreprise.</span>
-            </h2>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-red-100 p-6 rounded-xl text-center">
-              <div className="w-12 h-12 bg-red-500 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                <Cog className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="font-bold text-gray-900 mb-2">Transformation Digitale 360</h3>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative flex items-center justify-center h-full">
+              <img
+                src={require('../assets/équipe.jpg')}
+                alt="AI Illustration"
+                className="object-contain w-full h-64 md:h-96"
+              />
+              <div className="absolute bottom-0 right-0 w-20 h-20 bg-white bg-opacity-10 rounded-full transform translate-x-8 translate-y-8"></div>
+              <div className="absolute top-0 left-0 w-16 h-16 bg-white bg-opacity-5 transform -translate-x-4 -translate-y-4 rotate-45"></div>
             </div>
-            <div className="bg-green-100 p-6 rounded-xl text-center">
-              <div className="w-12 h-12 bg-green-500 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                <CheckCircle className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="font-bold text-gray-900 mb-2">IAEvolution</h3>
-            </div>
-            <div className="bg-purple-100 p-6 rounded-xl text-center">
-              <div className="w-12 h-12 bg-purple-500 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                <Target className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="font-bold text-gray-900 mb-2">NuclearIA</h3>
+
+            <div>
+              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                <span>NOTRE ÉQUIPE</span>
+              </h1>
+
+              <p className="text-lg text-gray-600 mb-6">
+                Nous assistons à une accélération sans précédent de l'adoption des nouvelles
+                technologies à l'échelle mondiale. Consciente du retard significatif des entreprises
+                malgaches dans cette course technologique et des risques liés à ce retard, RELIA s'engage
+                à accompagner les entreprises locales vers une adoption rapide et efficace des dernières
+                innovations technologiques, à travers notre offre spéciale : TRANSFORMATION DIGITALE
+                360 #PROGRESSIVE
+              </p>
+
+              <ul className="mb-6 space-y-2 px-[120px]">
+                <li className="flex items-start text-gray-700">
+                  <span className="mr-3 text-red-500">•</span>
+                  <span>Créée en décembre 2020</span>
+                </li>
+                <li className="flex items-start text-gray-700">
+                  <span className="mr-3 text-red-500">• </span>
+                  <span>+ de 50 talents en numérique</span>
+                </li>
+                <li className="flex items-start text-gray-700">
+                  <span className="mr-3 text-red-500">•</span>
+                  <span>+ de 30 entreprises locales et internationales accompagnées dont ORANGE, COI</span>
+                </li>
+              </ul>
+                          
+
+              <p className="text-lg text-gray-600">
+                <strong className="text-2xl"><em>Valeurs :</em></strong> Engagement, Excellence, Innovation, Collaboration.
+                Fondée par deux ingénieurs en informatique (ENI)
+              </p>
             </div>
           </div>
         </div>
