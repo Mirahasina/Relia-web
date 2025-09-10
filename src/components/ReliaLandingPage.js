@@ -74,7 +74,7 @@ Objectif: ${form.objectif}
   };
 
   return (
-    <div className="min-h-screen bg-white w-[100%]">
+    <div className="min-h-screen bg-white w-full">
       <header className="fixed top-0 left-0 w-full z-50 bg-white transition-colors duration-300 ease-in-out">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
@@ -448,22 +448,46 @@ Objectif: ${form.objectif}
         </div>
       </section>
 
-      <section className="relative py-16 text-white" style={{ background: 'linear-gradient(180deg, #ef4444 0%, #374151 100%)' }}>
-        <div className="absolute inset-0 pointer-events-none z-0"
+      <section
+        className="relative py-16 text-white"
+        style={{
+          background: 'linear-gradient(180deg, #ef4444 0%, #374151 100%)',
+        }}
+      >
+        <div
+          className="absolute inset-0 pointer-events-none z-0"
           style={{
-            background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 70%, transparent 100%)'
+            background:
+              'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 70%, transparent 100%)',
           }}
         />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold mb-4 drop-shadow-lg" id='audit' >
-                <span className="text-white">Recevez <span className="font-extrabold text-gray-100">gratuitement</span> votre audit digital & feuille de route personnalisée.</span>
+
+        <div className="relative max-w-7xl px-4 sm:px-6 lg:px-8 z-10  mx-auto">
+          <div className="flex flex-col lg:flex-row items-start justify-between gap-12">
+
+            <div className="flex flex-col items-center lg:items-start flex-shrink-0 mt-8 py-4">
+              <img
+                src={require('../assets/e-book.png')}
+                alt="Aperçu"
+                className="w-[250px] h-[280px] object-cover rounded-lg shadow-lg mb-4"
+              />
+              <p className="text-white/90 text-center lg:text-left max-w-[250px]">
+                Aperçu rapide de votre futur audit digital !<br />
+                Veuillez entrer vos coordonnées pour le recevoir.
+              </p>
+            </div>
+
+            <div className="flex-1 mx-4 lg:mx-8">
+              <h2 className="text-3xl font-bold mb-4 drop-shadow-lg" id="audit">
+                <span className="text-white">
+                  Recevez <span className="font-extrabold text-gray-100">gratuitement</span> votre audit digital & feuille de route personnalisée.
+                </span>
               </h2>
               <p className="text-lg mb-8 opacity-90 drop-shadow">
                 En quelques clics, identifiez vos points de blocage et découvrez comment gagner en productivité et en chiffre d'affaires.
               </p>
-              <form className="bg-white/30 backdrop-blur-md rounded-3xl p-6 shadow-2xl flex flex-col gap-4 max-w-xl mx-auto">
+
+              <form className="bg-white/30 backdrop-blur-md rounded-3xl p-6 shadow-2xl flex flex-col gap-4">
                 <div className="flex flex-col sm:flex-row gap-4">
                   <input
                     type="text"
@@ -490,38 +514,40 @@ Objectif: ${form.objectif}
               </form>
             </div>
 
-            <div
-              className="bg-white text-gray-900 p-8 rounded-3xl shadow-2xl max-w-md mx-auto flex flex-col justify-center transition-all duration-500 ease-in-out hover:bg-[#6B3B3B] hover:text-white hover:shadow-[0_8px_40px_0_rgba(107,59,59,0.25)] group"
-            >
-              <div className="font-bold text-lg mb-2 flex items-center gap-2">
-                <span className="inline-block w-6 h-6 bg-red-100 rounded-lg flex items-center justify-center mr-2 group-hover:bg-white/30 transition-colors duration-500">
-                  <Cog className="w-4 h-4 text-red-500 group-hover:text-white transition-colors duration-500" />
-                </span>
-                Audit Digital Complet
-              </div>
-              <ul className="space-y-3 mb-6 mt-2">
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 group-hover:text-green-300 transition-colors duration-500" />
-                  Analyse de vos process actuels
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 group-hover:text-green-300 transition-colors duration-500" />
-                  Identification des goulots d'étranglement
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 group-hover:text-green-300 transition-colors duration-500" />
-                  Recommandations personnalisées
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 group-hover:text-green-300 transition-colors duration-500" />
-                  Feuille de route sur 24 mois
-                </li>
-              </ul>
-              <div className="text-right mt-4">
-                <div className="text-base font-bold text-red-500 group-hover:text-white transition-colors duration-500">Valeur : 250 €</div>
-                <div className="text-lg font-bold text-red-600 group-hover:text-white transition-colors duration-500">Gratuit pour vous</div>
-              </div>
-            </div>
+            <div className="flex-shrink-0 w-full max-w-sm bg-white text-gray-900 p-8 rounded-3xl shadow-2xl flex flex-col justify-center transition-all duration-500 ease-in-out hover:bg-[#6B3B3B] hover:text-white hover:shadow-[0_8px_40px_0_rgba(107,59,59,0.25)] group lg:mt-8 mb-4">
+  <div className="font-bold text-lg mb-2 flex items-center gap-2">
+    <span className="inline-block w-6 h-6 bg-red-100 rounded-lg flex items-center justify-center mr-2 group-hover:bg-white/30 transition-colors duration-500">
+      <Cog className="w-4 h-4 text-red-500 group-hover:text-white transition-colors duration-500" />
+    </span>
+    Audit Digital Complet
+  </div>
+  <ul className="space-y-3 mb-6 mt-2">
+    <li className="flex items-center gap-2">
+      <CheckCircle className="w-5 h-5 text-green-500 group-hover:text-green-300 transition-colors duration-500" />
+      Analyse de vos process actuels
+    </li>
+    <li className="flex items-center gap-2">
+      <CheckCircle className="w-5 h-5 text-green-500 group-hover:text-green-300 transition-colors duration-500" />
+      Identification des goulots d'étranglement
+    </li>
+    <li className="flex items-center gap-2">
+      <CheckCircle className="w-5 h-5 text-green-500 group-hover:text-green-300 transition-colors duration-500" />
+      Recommandations personnalisées
+    </li>
+    <li className="flex items-center gap-2">
+      <CheckCircle className="w-5 h-5 text-green-500 group-hover:text-green-300 transition-colors duration-500" />
+      Feuille de route sur 24 mois
+    </li>
+  </ul>
+  <div className="text-right mt-4">
+    <div className="text-base font-bold text-red-500 group-hover:text-white transition-colors duration-500">
+      Valeur : 250 €
+    </div>
+    <div className="text-lg font-bold text-red-600 group-hover:text-white transition-colors duration-500">
+      Gratuit pour vous
+    </div>
+  </div>
+</div>
           </div>
         </div>
       </section>
