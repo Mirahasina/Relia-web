@@ -515,39 +515,39 @@ Objectif: ${form.objectif}
             </div>
 
             <div className="flex-shrink-0 w-full max-w-sm bg-white text-gray-900 p-8 rounded-3xl shadow-2xl flex flex-col justify-center transition-all duration-500 ease-in-out hover:bg-[#6B3B3B] hover:text-white hover:shadow-[0_8px_40px_0_rgba(107,59,59,0.25)] group lg:mt-8 mb-4">
-  <div className="font-bold text-lg mb-2 flex items-center gap-2">
-    <span className="inline-block w-6 h-6 bg-red-100 rounded-lg flex items-center justify-center mr-2 group-hover:bg-white/30 transition-colors duration-500">
-      <Cog className="w-4 h-4 text-red-500 group-hover:text-white transition-colors duration-500" />
-    </span>
-    Audit Digital Complet
-  </div>
-  <ul className="space-y-3 mb-6 mt-2">
-    <li className="flex items-center gap-2">
-      <CheckCircle className="w-5 h-5 text-green-500 group-hover:text-green-300 transition-colors duration-500" />
-      Analyse de vos process actuels
-    </li>
-    <li className="flex items-center gap-2">
-      <CheckCircle className="w-5 h-5 text-green-500 group-hover:text-green-300 transition-colors duration-500" />
-      Identification des goulots d'étranglement
-    </li>
-    <li className="flex items-center gap-2">
-      <CheckCircle className="w-5 h-5 text-green-500 group-hover:text-green-300 transition-colors duration-500" />
-      Recommandations personnalisées
-    </li>
-    <li className="flex items-center gap-2">
-      <CheckCircle className="w-5 h-5 text-green-500 group-hover:text-green-300 transition-colors duration-500" />
-      Feuille de route sur 24 mois
-    </li>
-  </ul>
-  <div className="text-right mt-4">
-    <div className="text-base font-bold text-red-500 group-hover:text-white transition-colors duration-500">
-      Valeur : 250 €
-    </div>
-    <div className="text-lg font-bold text-red-600 group-hover:text-white transition-colors duration-500">
-      Gratuit pour vous
-    </div>
-  </div>
-</div>
+              <div className="font-bold text-lg mb-2 flex items-center gap-2">
+                <span className="inline-block w-6 h-6 bg-red-100 rounded-lg flex items-center justify-center mr-2 group-hover:bg-white/30 transition-colors duration-500">
+                  <Cog className="w-4 h-4 text-red-500 group-hover:text-white transition-colors duration-500" />
+                </span>
+                Audit Digital Complet
+              </div>
+              <ul className="space-y-3 mb-6 mt-2">
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-500 group-hover:text-green-300 transition-colors duration-500" />
+                  Analyse de vos process actuels
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-500 group-hover:text-green-300 transition-colors duration-500" />
+                  Identification des goulots d'étranglement
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-500 group-hover:text-green-300 transition-colors duration-500" />
+                  Recommandations personnalisées
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-500 group-hover:text-green-300 transition-colors duration-500" />
+                  Feuille de route sur 24 mois
+                </li>
+              </ul>
+              <div className="text-right mt-4">
+                <div className="text-base font-bold text-red-500 group-hover:text-white transition-colors duration-500">
+                  Valeur : 250 €
+                </div>
+                <div className="text-lg font-bold text-red-600 group-hover:text-white transition-colors duration-500">
+                  Gratuit pour vous
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
