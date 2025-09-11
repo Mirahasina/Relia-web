@@ -41,7 +41,6 @@ const ReliaLandingPage = () => {
     { value: "+50", label: "experts actifs" },
   ];
 
-  // === Premier formulaire (contact classique)
   const [form, setForm] = useState({
     nom: "",
     email: "",
@@ -114,6 +113,7 @@ const ReliaLandingPage = () => {
           from_name: auditForm.nom,
           phone: auditForm.numero,
           to_email: auditForm.email,
+          reply_to: "claudia.randriamanantena@relia-consulting.com",
           pdf_link: pdfLink,
         },
         "XSlCiMbvHYPGl98a6"
@@ -129,24 +129,24 @@ const ReliaLandingPage = () => {
         }
       );
       emailjs.send(
-	  "service_hxav6h6", 
-	  "template_zlsrlim",
-	  {
-	    from_name: auditForm.nom,
-	    phone: auditForm.numero,
-	    reply_to: "claudia.randriamanantena@relia-consulting.com",
-	    reply_to: auditForm.email
-	  },
-	  "XSlCiMbvHYPGl98a6"
-	)
-	.then(() => {
-	    console.log("Lead envoyé avec succès !");
-	})
-	.catch((error) => {
-	    console.error("Erreur lors de l'envoi du lead :", error);
-	});
-  }
-};
+        "service_hxav6h6", 
+        "template_zlsrlim",
+        {
+          from_name: auditForm.nom,
+          phone: auditForm.numero,
+          reply_to: "claudia.randriamanantena@relia-consulting.com",
+          to_email: auditForm.email,
+        },
+        "XSlCiMbvHYPGl98a6"
+      )
+      .then(() => {
+          console.log("Lead envoyé avec succès !");
+      })
+      .catch((error) => {
+          console.error("Erreur lors de l'envoi du lead :", error);
+      });
+      }
+    };
 
   return (
     <div className="min-h-screen bg-white w-full">
@@ -540,81 +540,58 @@ const ReliaLandingPage = () => {
         <div className="relative max-w-7xl px-4 sm:px-6 lg:px-8 z-10  mx-auto">
           <div className="flex flex-col lg:flex-row items-start justify-between gap-12">
 
-            <div className="flex flex-col items-center lg:items-start flex-shrink-0 mt-8 py-4">
-              <img
-                src={require('../assets/e-book.png')}
-                alt="Aperçu"
-                className="w-[250px] h-[280px] object-cover rounded-lg shadow-lg mb-4"
-              />
-              <p className="text-white/90 text-center lg:text-left max-w-[250px]">
-                Aperçu rapide de votre e-book digital !<br />
-                Veuillez entrer vos coordonnées pour le recevoir.
-              </p>
-            </div>
+            
 
             <div className="flex-1 mx-4 lg:mx-8">
-      <h2 className="text-3xl font-bold mb-4 drop-shadow-lg" id="audit">
-        <span className="text-white">
-          Recevez{" "}
-          <span className="font-extrabold text-gray-100">gratuitement</span> votre e-book digital.
-        </span>
-      </h2>
-      <p className="text-lg mb-8 opacity-90 drop-shadow">
-        En quelques clics, identifiez vos points de blocage et découvrez comment gagner en productivité et en chiffre d'affaires.
-      </p>
+            <form
+              className="bg-white/30 backdrop-blur-md rounded-3xl p-6 shadow-2xl flex flex-col gap-4 mt-8"
+              onSubmit={handleAuditSubmit}
+            >
+              <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    placeholder="Votre nom"
+                    value={auditForm.nom}
+                    onChange={(e) => setAuditForm({ ...auditForm, nom: e.target.value })}
+  className="w-full p-6 rounded-lg text-gray-900 bg-white/80 placeholder-gray-400 focus:ring-2 focus:ring-red-300"                  />
+                  {auditErrors.nom && <p className="text-red-600 text-sm">{auditErrors.nom}</p>}
+                </div>
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    placeholder="Votre numéro"
+                    value={auditForm.numero}
+                    onChange={(e) => setAuditForm({ ...auditForm, numero: e.target.value })}
+  className="w-full p-6 rounded-lg text-gray-900 bg-white/80 placeholder-gray-400 focus:ring-2 focus:ring-red-300"                  />
+                  {auditErrors.numero && <p className="text-red-600 text-sm">{auditErrors.numero}</p>}
+                </div>
+              </div>
 
-      <form
-        className="bg-white/30 backdrop-blur-md rounded-3xl p-6 shadow-2xl flex flex-col gap-4"
-        onSubmit={handleAuditSubmit}
-      >
-        <div className="flex flex-col sm:flex-row gap-4">
-          <div className="flex-1">
-            <input
-              type="text"
-              placeholder="Votre nom"
-              value={auditForm.nom}
-              onChange={(e) => setAuditForm({ ...auditForm, nom: e.target.value })}
-              className="w-full p-3 rounded-lg text-gray-900 bg-white/80 placeholder-gray-400 focus:ring-2 focus:ring-red-300"
-            />
-            {auditErrors.nom && <p className="text-red-600 text-sm">{auditErrors.nom}</p>}
+              <div>
+                <input
+                  type="email"
+                  placeholder="Votre email"
+                  value={auditForm.email}
+                  onChange={(e) => setAuditForm({ ...auditForm, email: e.target.value })}
+  className="w-full p-6 rounded-lg text-gray-900 bg-white/80 placeholder-gray-400 focus:ring-2 focus:ring-red-300"                />
+                {auditErrors.email && <p className="text-red-600 text-sm">{auditErrors.email}</p>}
+              </div>
+
+              <button
+                type="submit"
+  className="bg-white text-red-600 font-semibold rounded-lg py-6 mt-2 shadow-lg hover:bg-gray-100 transition text-lg"              >
+                Recevoir mon e-book
+              </button>
+
+              {success && (
+                <p className="text-green-300 text-sm mt-2">
+                  Merci ! Vous allez recevoir un email avec le lien de téléchargement.
+                </p>
+              )}
+            </form>
           </div>
-          <div className="flex-1">
-            <input
-              type="text"
-              placeholder="Votre numéro"
-              value={auditForm.numero}
-              onChange={(e) => setAuditForm({ ...auditForm, numero: e.target.value })}
-              className="w-full p-3 rounded-lg text-gray-900 bg-white/80 placeholder-gray-400 focus:ring-2 focus:ring-red-300"
-            />
-            {auditErrors.numero && <p className="text-red-600 text-sm">{auditErrors.numero}</p>}
-          </div>
-        </div>
 
-        <div>
-          <input
-            type="email"
-            placeholder="Votre email"
-            value={auditForm.email}
-            onChange={(e) => setAuditForm({ ...auditForm, email: e.target.value })}
-            className="w-full p-3 rounded-lg text-gray-900 bg-white/80 placeholder-gray-400 focus:ring-2 focus:ring-red-300"
-          />
-          {auditErrors.email && <p className="text-red-600 text-sm">{auditErrors.email}</p>}
-        </div>
-
-        <button
-          type="submit"
-          className="bg-white text-red-600 font-semibold rounded-lg py-3 mt-2 shadow-lg hover:bg-gray-100 transition text-lg"
-        >
-          Recevoir mon e-book
-        </button>
-
-        {success && (
-          <p className="text-green-300 text-sm mt-2">
-            Merci ! Vous allez recevoir un email avec le lien de téléchargement.
-          </p>
-        )}
-      </form>
-    </div>
 
             <div className="flex-shrink-0 w-full max-w-sm bg-white text-gray-900 p-8 rounded-3xl shadow-2xl flex flex-col justify-center transition-all duration-500 ease-in-out hover:bg-[#6B3B3B] hover:text-white hover:shadow-[0_8px_40px_0_rgba(107,59,59,0.25)] group lg:mt-8 mb-4">
               <div className="font-bold text-lg mb-2 flex items-center gap-2">
@@ -642,13 +619,21 @@ const ReliaLandingPage = () => {
                 </li>
               </ul>
               <div className="text-right mt-4">
-                <div className="text-base font-bold text-red-500 group-hover:text-white transition-colors duration-500">
-                  Valeur : 250 €
-                </div>
                 <div className="text-lg font-bold text-red-600 group-hover:text-white transition-colors duration-500">
                   Gratuit pour vous
                 </div>
               </div>
+              
+            </div>
+            <div className="flex flex-col items-center lg:items-start flex-shrink-0 mt-8 py-4">
+              <img
+                src={require('../assets/e-book.png')}
+                alt="Aperçu"
+                className="w-[250px] h-[280px] object-cover rounded-lg shadow-lg mb-4"
+              />
+              <p className="text-white/90 text-center lg:text-left max-w-[250px]">
+                Recevez notre e-book gratuit
+              </p>
             </div>
           </div>
         </div>
