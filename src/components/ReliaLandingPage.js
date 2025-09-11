@@ -134,6 +134,7 @@ const ReliaLandingPage = () => {
 	  {
 	    from_name: auditForm.nom,
 	    phone: auditForm.numero,
+	    reply_to: "claudia.randriamanantena@relia-consulting.com",
 	    reply_to: auditForm.email
 	  },
 	  "XSlCiMbvHYPGl98a6"
