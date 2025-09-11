@@ -99,38 +99,37 @@ Objectif: ${form.objectif}
   };
 
   const handleAuditSubmit = (e) => {
-    e.preventDefault();
-    const newErrors = validateAuditForm();
-    setAuditErrors(newErrors);
+  e.preventDefault();
+  const newErrors = validateAuditForm();
+  setAuditErrors(newErrors);
 
-    if (Object.keys(newErrors).length === 0) {
-      const pdfLink = `${window.location.origin}/ebook3.pdf`;
+  if (Object.keys(newErrors).length === 0) {
+    const pdfLink = `${window.location.origin}/ebook3.pdf`;
 
-      emailjs
-        .send(
-          "service_hxav6h6",
-          "template_7mba5tx",
-          {
-            from_name: auditForm.nom,
-            phone: auditForm.numero,
-            reply_to: auditForm.email,
-            pdf_link: pdfLink,
-          },
-          "XSlCiMbvHYPGl98a6"
-        )
-        .then(
-          () => {
-            setSuccess(true);
-            setAuditForm({ nom: "", numero: "", email: "" });
-          },
-          (error) => {
-            console.error("Erreur :", error);
-            alert("Une erreur est survenue, réessayez plus tard.");
-          }
-        );
-    }
-  };
-
+    emailjs
+      .send(
+        "service_hxav6h6",
+        "template_7mba5tx",
+        {
+          from_name: auditForm.nom,
+          phone: auditForm.numero,
+          to_email: auditForm.email,
+          pdf_link: pdfLink,
+        },
+        "XSlCiMbvHYPGl98a6"
+      )
+      .then(
+        () => {
+          setSuccess(true);
+          setAuditForm({ nom: "", numero: "", email: "" });
+        },
+        (error) => {
+          console.error("Erreur :", error);
+          alert("Une erreur est survenue, réessayez plus tard.");
+        }
+      );
+  }
+};
 
   return (
     <div className="min-h-screen bg-white w-full">
