@@ -1,5 +1,15 @@
-import React, { useState, useRef,  useEffect } from 'react';
-import {  Users, Cog, Target, CheckCircle, Phone, Mail, MapPin, Search } from 'lucide-react';
+import React, { useState, useRef, useEffect } from "react";
+import {
+  Users,
+  Cog,
+  Target,
+  CheckCircle,
+  Phone,
+  Mail,
+  MapPin,
+  Search,
+} from "lucide-react";
+import emailjs from "emailjs-com"; // <-- ajoute EmailJS
 
 const ReliaLandingPage = () => {
   const spinRef = useRef(null);
@@ -16,43 +26,43 @@ const ReliaLandingPage = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  
   const processSteps = [
     { id: 1, title: "Analyse", description: "Audit complet", color: "bg-red-500" },
     { id: 2, title: "Optimisation", description: "Solutions sur mesure", color: "bg-green-500" },
-    { id: 3, title: "Suivi", description: "Accompagnement", color: "bg-purple-500" }
+    { id: 3, title: "Suivi", description: "Accompagnement", color: "bg-purple-500" },
   ];
 
   const stats = [
     { value: "95%", label: "satisfaction client" },
     { value: "+12,000", label: "Projets livrés" },
-    { value: "+50", label: "experts actifs" }
+    { value: "+50", label: "experts actifs" },
   ];
 
-
-const [form, setForm] = useState({
-  nom: '',
-  email: '',
-  entreprise: '',
-  role: '',
-  objectif: '',
-});
-const [errors, setErrors] = useState({});
+  // --- Premier formulaire (contact classique)
+  const [form, setForm] = useState({
+    nom: "",
+    email: "",
+    entreprise: "",
+    role: "",
+    objectif: "",
+  });
+  const [errors, setErrors] = useState({});
 
   const validate = () => {
     const newErrors = {};
-    if (!form.nom) newErrors.nom = 'Champ obligatoire';
-    if (!form.email) newErrors.email = 'Champ obligatoire';
-    else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/.test(form.email)) newErrors.email = 'Email invalide';
-    if (!form.objectif) newErrors.objectif = 'Champ obligatoire';
+    if (!form.nom) newErrors.nom = "Champ obligatoire";
+    if (!form.email) newErrors.email = "Champ obligatoire";
+    else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/.test(form.email))
+      newErrors.email = "Email invalide";
+    if (!form.objectif) newErrors.objectif = "Champ obligatoire";
     return newErrors;
   };
 
@@ -68,9 +78,63 @@ const [errors, setErrors] = useState({});
       Rôle: ${form.role}
       Objectif: ${form.objectif}
       `;
-      window.location.href = `mailto:contact@relia-consulting.mg?subject=Contact%20depuis%20le%20site%20Relia&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto:contact@relia-consulting.mg?subject=Contact%20depuis%20le%20site%20Relia&body=${encodeURIComponent(
+        body
+      )}`;
     }
   };
+
+  const [auditForm, setAuditForm] = useState({
+    nom: "",
+    numero: "",
+    email: "",
+  });
+  const [auditErrors, setAuditErrors] = useState({});
+  const [success, setSuccess] = useState(false);
+
+  const validateAuditForm = () => {
+    const newErrors = {};
+    if (!auditForm.nom) newErrors.nom = "Champ obligatoire";
+    if (!auditForm.numero) newErrors.numero = "Champ obligatoire";
+    if (!auditForm.email) newErrors.email = "Champ obligatoire";
+    else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/.test(auditForm.email))
+      newErrors.email = "Email invalide";
+    return newErrors;
+  };
+
+  const handleAuditSubmit = (e) => {
+    e.preventDefault();
+    const newErrors = validateAuditForm();
+    setAuditErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      const pdfLink = `${window.location.origin}/ebook3.pdf`;
+
+      emailjs
+        .send(
+          "service_hxav6h6",
+          "template_7mba5tx",
+          {
+            from_name: auditForm.nom,
+            phone: auditForm.numero,
+            reply_to: auditForm.email,
+            pdf_link: pdfLink,
+          },
+          "XSlCiMbvHYPGl98a6"
+        )
+        .then(
+          () => {
+            setSuccess(true);
+            setAuditForm({ nom: "", numero: "", email: "" });
+          },
+          (error) => {
+            console.error("Erreur :", error);
+            alert("Une erreur est survenue, réessayez plus tard.");
+          }
+        );
+    }
+  };
+
 
   return (
     <div className="min-h-screen bg-white w-full">
@@ -477,41 +541,68 @@ const [errors, setErrors] = useState({});
             </div>
 
             <div className="flex-1 mx-4 lg:mx-8">
-              <h2 className="text-3xl font-bold mb-4 drop-shadow-lg" id="audit">
-                <span className="text-white">
-                  Recevez <span className="font-extrabold text-gray-100">gratuitement</span> votre audit digital & feuille de route personnalisée.
-                </span>
-              </h2>
-              <p className="text-lg mb-8 opacity-90 drop-shadow">
-                En quelques clics, identifiez vos points de blocage et découvrez comment gagner en productivité et en chiffre d'affaires.
-              </p>
+      <h2 className="text-3xl font-bold mb-4 drop-shadow-lg" id="audit">
+        <span className="text-white">
+          Recevez{" "}
+          <span className="font-extrabold text-gray-100">gratuitement</span> votre audit digital & feuille de route personnalisée.
+        </span>
+      </h2>
+      <p className="text-lg mb-8 opacity-90 drop-shadow">
+        En quelques clics, identifiez vos points de blocage et découvrez comment gagner en productivité et en chiffre d'affaires.
+      </p>
 
-              <form className="bg-white/30 backdrop-blur-md rounded-3xl p-6 shadow-2xl flex flex-col gap-4">
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <input
-                    type="text"
-                    placeholder="Votre nom"
-                    className="flex-1 p-3 rounded-lg text-gray-900 bg-white/80 placeholder-gray-400 border-none focus:ring-2 focus:ring-red-300"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Votre numéro"
-                    className="flex-1 p-3 rounded-lg text-gray-900 bg-white/80 placeholder-gray-400 border-none focus:ring-2 focus:ring-red-300"
-                  />
-                </div>
-                <input
-                  type="email"
-                  placeholder="Votre email"
-                  className="p-3 rounded-lg text-gray-900 bg-white/80 placeholder-gray-400 border-none focus:ring-2 focus:ring-red-300"
-                />
-                <button
-                  type="submit"
-                  className="bg-white text-red-600 font-semibold rounded-lg py-3 mt-2 shadow-lg hover:bg-gray-100 transition text-lg"
-                >
-                  Recevoir mon audit gratuit
-                </button>
-              </form>
-            </div>
+      <form
+        className="bg-white/30 backdrop-blur-md rounded-3xl p-6 shadow-2xl flex flex-col gap-4"
+        onSubmit={handleAuditSubmit}
+      >
+        <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex-1">
+            <input
+              type="text"
+              placeholder="Votre nom"
+              value={auditForm.nom}
+              onChange={(e) => setAuditForm({ ...auditForm, nom: e.target.value })}
+              className="w-full p-3 rounded-lg text-gray-900 bg-white/80 placeholder-gray-400 focus:ring-2 focus:ring-red-300"
+            />
+            {auditErrors.nom && <p className="text-red-600 text-sm">{auditErrors.nom}</p>}
+          </div>
+          <div className="flex-1">
+            <input
+              type="text"
+              placeholder="Votre numéro"
+              value={auditForm.numero}
+              onChange={(e) => setAuditForm({ ...auditForm, numero: e.target.value })}
+              className="w-full p-3 rounded-lg text-gray-900 bg-white/80 placeholder-gray-400 focus:ring-2 focus:ring-red-300"
+            />
+            {auditErrors.numero && <p className="text-red-600 text-sm">{auditErrors.numero}</p>}
+          </div>
+        </div>
+
+        <div>
+          <input
+            type="email"
+            placeholder="Votre email"
+            value={auditForm.email}
+            onChange={(e) => setAuditForm({ ...auditForm, email: e.target.value })}
+            className="w-full p-3 rounded-lg text-gray-900 bg-white/80 placeholder-gray-400 focus:ring-2 focus:ring-red-300"
+          />
+          {auditErrors.email && <p className="text-red-600 text-sm">{auditErrors.email}</p>}
+        </div>
+
+        <button
+          type="submit"
+          className="bg-white text-red-600 font-semibold rounded-lg py-3 mt-2 shadow-lg hover:bg-gray-100 transition text-lg"
+        >
+          Recevoir mon audit gratuit
+        </button>
+
+        {success && (
+          <p className="text-green-600 text-sm mt-2">
+            ✅ Merci ! Vous allez recevoir un email avec le lien de téléchargement.
+          </p>
+        )}
+      </form>
+    </div>
 
             <div className="flex-shrink-0 w-full max-w-sm bg-white text-gray-900 p-8 rounded-3xl shadow-2xl flex flex-col justify-center transition-all duration-500 ease-in-out hover:bg-[#6B3B3B] hover:text-white hover:shadow-[0_8px_40px_0_rgba(107,59,59,0.25)] group lg:mt-8 mb-4">
               <div className="font-bold text-lg mb-2 flex items-center gap-2">
