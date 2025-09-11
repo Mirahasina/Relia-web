@@ -530,7 +530,7 @@ Objectif: ${form.objectif}
                 className="w-[250px] h-[280px] object-cover rounded-lg shadow-lg mb-4"
               />
               <p className="text-white/90 text-center lg:text-left max-w-[250px]">
-                Aperçu rapide de votre futur audit digital !<br />
+                Aperçu rapide de votre e-book digital !<br />
                 Veuillez entrer vos coordonnées pour le recevoir.
               </p>
             </div>
@@ -539,7 +539,7 @@ Objectif: ${form.objectif}
       <h2 className="text-3xl font-bold mb-4 drop-shadow-lg" id="audit">
         <span className="text-white">
           Recevez{" "}
-          <span className="font-extrabold text-gray-100">gratuitement</span> votre audit digital & feuille de route personnalisée.
+          <span className="font-extrabold text-gray-100">gratuitement</span> votre e-book digital.
         </span>
       </h2>
       <p className="text-lg mb-8 opacity-90 drop-shadow">
@@ -588,12 +588,12 @@ Objectif: ${form.objectif}
           type="submit"
           className="bg-white text-red-600 font-semibold rounded-lg py-3 mt-2 shadow-lg hover:bg-gray-100 transition text-lg"
         >
-          Recevoir mon audit gratuit
+          Recevoir mon e-book
         </button>
 
         {success && (
-          <p className="text-green-600 text-sm mt-2">
-            ✅ Merci ! Vous allez recevoir un email avec le lien de téléchargement.
+          <p className="text-green-300 text-sm mt-2">
+            Merci ! Vous allez recevoir un email avec le lien de téléchargement.
           </p>
         )}
       </form>
@@ -604,7 +604,7 @@ Objectif: ${form.objectif}
                 <span className="inline-block w-6 h-6 bg-red-100 rounded-lg flex items-center justify-center mr-2 group-hover:bg-white/30 transition-colors duration-500">
                   <Cog className="w-4 h-4 text-red-500 group-hover:text-white transition-colors duration-500" />
                 </span>
-                Audit Digital Complet
+                E-book Digital Complet
               </div>
               <ul className="space-y-3 mb-6 mt-2">
                 <li className="flex items-center gap-2">
@@ -613,7 +613,7 @@ Objectif: ${form.objectif}
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-500 group-hover:text-green-300 transition-colors duration-500" />
-                  Identification des goulots d'étranglement
+                  Identification des goulots
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-500 group-hover:text-green-300 transition-colors duration-500" />
