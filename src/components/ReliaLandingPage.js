@@ -68,12 +68,12 @@ const ReliaLandingPage = () => {
 
     if (Object.keys(newErrors).length === 0) {
       const body = `
-Nom complet: ${form.nom}
-Email: ${form.email}
-Entreprise: ${form.entreprise}
-Rôle: ${form.role}
-Objectif: ${form.objectif}
-`;
+	Nom complet: ${form.nom}
+	Email: ${form.email}
+	Entreprise: ${form.entreprise}
+	Rôle: ${form.role}
+	Objectif: ${form.objectif}
+	`;
       window.location.href = `mailto:contact@relia-consulting.mg?subject=Contact%20depuis%20le%20site%20Relia&body=${encodeURIComponent(
         body
       )}`;
@@ -128,6 +128,22 @@ Objectif: ${form.objectif}
           alert("Une erreur est survenue, réessayez plus tard.");
         }
       );
+      emailjs.send(
+	  "service_hxav6h6", 
+	  "template_zlsrlim",
+	  {
+	    from_name: auditForm.nom,
+	    phone: auditForm.numero,
+	    reply_to: auditForm.email
+	  },
+	  "XSlCiMbvHYPGl98a6"
+	)
+	.then(() => {
+	    console.log("Lead envoyé avec succès !");
+	})
+	.catch((error) => {
+	    console.error("Erreur lors de l'envoi du lead :", error);
+	});
   }
 };
 
