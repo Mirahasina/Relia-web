@@ -9,7 +9,7 @@ import {
   MapPin,
   Search,
 } from "lucide-react";
-import emailjs from "emailjs-com"; // <-- ajoute EmailJS
+import emailjs from "emailjs-com";
 
 const ReliaLandingPage = () => {
   const spinRef = useRef(null);
@@ -19,13 +19,8 @@ const ReliaLandingPage = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 200) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
-      }
+      setShowScrollTop(window.scrollY > 200);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -46,7 +41,7 @@ const ReliaLandingPage = () => {
     { value: "+50", label: "experts actifs" },
   ];
 
-  // --- Premier formulaire (contact classique)
+  // === Premier formulaire (contact classique)
   const [form, setForm] = useState({
     nom: "",
     email: "",
@@ -70,14 +65,15 @@ const ReliaLandingPage = () => {
     e.preventDefault();
     const newErrors = validate();
     setErrors(newErrors);
+
     if (Object.keys(newErrors).length === 0) {
       const body = `
-      Nom complet: ${form.nom}
-      Email: ${form.email}
-      Entreprise: ${form.entreprise}
-      Rôle: ${form.role}
-      Objectif: ${form.objectif}
-      `;
+Nom complet: ${form.nom}
+Email: ${form.email}
+Entreprise: ${form.entreprise}
+Rôle: ${form.role}
+Objectif: ${form.objectif}
+`;
       window.location.href = `mailto:contact@relia-consulting.mg?subject=Contact%20depuis%20le%20site%20Relia&body=${encodeURIComponent(
         body
       )}`;
